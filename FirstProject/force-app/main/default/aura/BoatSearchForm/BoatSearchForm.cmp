@@ -1,0 +1,24 @@
+<aura:component controller="BootSearchFormController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="options" type="List" />
+    <aura:attribute name="isForceCreateRecordAllowed" type="Boolean" />
+    <aura:attribute name="selectedValue" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:registerEvent name="formsubmit" type="c:FormSubmit"/>
+    <lightning:layout horizontalAlign="center" class="x-small">        
+        <lightning:layoutItem padding="around-small">
+            <lightning:select aura:id="boatTypes" name="select" value="{!v.selectedValue}" class="custom-box boatTopAlign">
+                <aura:iteration items="{!v.options}" var="item">            
+                    <option value="{!item.value}" text="{!item.label}"	/>
+                </aura:iteration>
+            </lightning:select>
+        </lightning:layoutItem>        
+        <lightning:layoutItem padding="around-small" class="custom-box">
+            <lightning:button variant ="brand" label="Search" onclick="{!c.onFormSubmit}" />
+        </lightning:layoutItem>
+        <aura:if isTrue="{!v.isForceCreateRecordAllowed}">
+            <lightning:layoutItem padding="around-small" class="custom-box">
+                <lightning:button variant ="neutral" label="New" onclick="{!c.createBoatRecord}" />
+            </lightning:layoutItem>
+        </aura:if>        
+    </lightning:layout>    
+</aura:component>

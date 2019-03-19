@@ -1,0 +1,20 @@
+<aura:component  implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:handler name="formsubmit" event="c:FormSubmit" action="{!c.onFormSubmit}"/>
+
+    <lightning:layout multipleRows="true">        
+        <lightning:layoutItem  size="12">
+            <div class="page-footer page-section">
+                <lightning:card  title="Find a Boat">
+                    <c:BoatSearchForm />
+                </lightning:card>    
+            </div>
+        </lightning:layoutItem>
+        <lightning:layoutItem  size="12">
+            <div class="page-footer page-section">
+                <lightning:card class="cardHieght"  title="Matching Boats">
+                    <c:BoatSearchResults aura:id="BoatSearchResults" /> 
+                </lightning:card>       
+            </div>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>
